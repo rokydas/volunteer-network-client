@@ -7,7 +7,7 @@ const Home = () => {
         <div>
             <h1>This is home</h1>
             {
-                eventData.map(event => <Event event={event}></Event>)
+                eventData.map(event => <Event key={event._id} event={event}></Event>)
             }
         </div>
     );
