@@ -3,7 +3,7 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
-import { firebaseConfig } from './firebase.config';
+import { firebaseConfig } from '../../../firebase.config';
 
 const Login = () => {
 
