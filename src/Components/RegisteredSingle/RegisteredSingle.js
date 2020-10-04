@@ -8,21 +8,10 @@ const RegisteredSingle = (props) => {
     const [signedInUser, setSignedInUser] = useContext(UserContext);
 
     const handleDelete = () => {
-        fetch(`http://localhost:5000/delete/${_id}`, { method: 'DELETE' })
+        fetch(`https://volunteer-network18.herokuapp.com/delete/${_id}`, { method: 'DELETE' })
         .then(res => res.json())
         .then(result => console.log(result))
     }
-
-    // fetch(`/delete/${id}`, {
-    //     method: 'DELETE'
-    // })
-    // .then(res => res.json())
-    // .then(result => {
-    //     console.log('Deleted successfully');
-    //     if(result){
-    //         event.target.parentNode.style.display = 'none';
-    //     }
-    // })
 
     return (
         <div>

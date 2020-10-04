@@ -4,11 +4,9 @@ import { UserContext } from '../../App';
 import eventData from '../fakeData/eventData';
 
 import 'date-fns';
-import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
@@ -36,7 +34,7 @@ const RegisterVolunteer = () => {
             eventImg: event.img,
             date: selectedDate,
         }
-        fetch('http://localhost:5000/addRegisteredEvent', { 
+        fetch('https://volunteer-network18.herokuapp.com/addRegisteredEvent', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,8 +46,6 @@ const RegisterVolunteer = () => {
 
     return (
         <div>
-            <h4>I am register volunteer</h4>
-            {/* <h3>Name: {signedInUser.name}</h3> */}
             <div className="container h-100">
                 <div className="row h-100 justify-content-center align-items-center">
                     <div className="col-10 col-md-8 col-lg-6">
@@ -90,7 +86,6 @@ const RegisterVolunteer = () => {
                                 </MuiPickersUtilsProvider>
                             </div>
                             
-
                             <button onClick={handleAddRegisteredEvent} className="btn btn-primary btn-customized">Registration</button>
                         </form>
                     </div>

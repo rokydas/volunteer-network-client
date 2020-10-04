@@ -1,3 +1,7 @@
 .header {
     background-image: url('');
 }
+
+.navbar-brand img {
+    width: 250px;
+}
