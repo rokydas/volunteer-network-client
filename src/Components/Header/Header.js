@@ -45,6 +45,7 @@ const Header = () => {
                         <li className="nav-item"><a className="nav-link active" href="/">Donation</a></li>
                         <li className="nav-item"><a className="nav-link active" href="/registeredEvent">Your Events</a></li>
                         <li className="nav-item"><a className="nav-link active" href="">Blog</a></li>
+                        <li className="nav-item"><a href="/adminShowEvent"><button className="btn btn-primary">Admin</button></a></li>
                     </ul>
                 </div>
             </nav>

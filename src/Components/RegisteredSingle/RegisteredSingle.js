@@ -18,16 +18,7 @@ const RegisteredSingle = (props) => {
     }
 
     return (
-        // <div>
-
-        //     {email === signedInEmail && <div>
-        //         <img src={eventImg} alt="Load"/>
-        //         <h3>{eventName}</h3>
-        //         <p>{eventDescription}</p>
-        //         <button onClick={handleDelete}>Cancel</button>
-        //     </div>}
-            
-        // </div>
+        
         <div style={{display: 'inline-block'}}>
             { email === signedInEmail && 
                 <div className="card event-block" style={{width: '20rem'}}>

@@ -3,7 +3,7 @@ import RegisteredSingle from '../RegisteredSingle/RegisteredSingle';
 
 const RegisteredEvent = () => {
 
-    const [registeredEvent, setRegisteredEvent] = useState([])
+    const [registeredEvent, setRegisteredEvent] = useState([]);
 
     useEffect( () => {
         fetch('https://volunteer-network18.herokuapp.com/registeredEvent')

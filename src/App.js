@@ -10,6 +10,7 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import RegisterVolunteer from './Components/RegisterVolunteer/RegisterVolunteer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RegisteredEvent from './Components/RegisteredEvent/RegisteredEvent';
+import AdminShowEvent from './Components/AdminShowEvent/AdminShowEvent';
 
 export const UserContext = createContext()
 
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path='/login'>
             <Login/>
+          </Route>
+          <Route path='/adminShowEvent'>
+            <AdminShowEvent/>
           </Route>
           <PrivateRoute path='/registerVolunteer/:id'>
             <RegisterVolunteer/>

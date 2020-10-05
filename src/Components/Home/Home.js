@@ -14,7 +14,8 @@ const Home = () => {
     }, [])  
 
     return (
-        <div className="custom-container">
+        <div className="custom-container"><br/>
+            <h1 className="text-center">I grow by helping people in need.</h1><br/>
             {
                 eventData.map(event => <Event key={event._id} event={event}></Event>)
             }
