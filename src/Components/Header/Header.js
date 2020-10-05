@@ -22,10 +22,8 @@ const Header = () => {
         history.go(0);
     }
  
-    const name = localStorage.getItem("name");
-    const email = localStorage.getItem("email");  
-
-    console.log(name, email)
+    const name = JSON.parse(localStorage.getItem("name"));
+    const email = JSON.parse(localStorage.getItem("email"));  
 
     return (
         <div className="header">

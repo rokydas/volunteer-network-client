@@ -4,7 +4,7 @@ import { UserContext } from '../../App';
 
 const PrivateRoute = ({ children, ...rest }) => {
   
-  const email = sessionStorage.getItem("email");
+  const email = JSON.parse(localStorage.getItem("email"));  
 
     return (
       <Route
