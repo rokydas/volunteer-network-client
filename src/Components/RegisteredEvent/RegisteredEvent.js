@@ -12,7 +12,7 @@ const RegisteredEvent = () => {
     }, [])
 
     return (
-        <div>
+        <div className="custom-container">
             {
                 registeredEvent.map(event => <RegisteredSingle event={event} key={event.id}/>)
             }

@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { UserContext } from '../../App';
 import eventData from '../fakeData/eventData';
 
 import 'date-fns';
@@ -14,7 +13,9 @@ const RegisterVolunteer = () => {
 
     const history = useHistory();
 
-    const [signedInUser, setSignedInUser] = useContext(UserContext);
+    const name = JSON.parse(localStorage.getItem("name"));
+    const email = JSON.parse(localStorage.getItem("email")); 
+
     const { id } = useParams();
     const event = eventData[id - 1];
 
@@ -24,11 +25,11 @@ const RegisterVolunteer = () => {
         setSelectedDate(date);
     };
 
-    const handleAddRegisteredEvent = () => {
+    const handleAddRegisteredEvent = (e) => {
         const registeredInfo = {
             id: event.id,
-            name: signedInUser.name,
-            email: signedInUser.email,
+            name: name,
+            email: email,
             eventName: event.name,
             eventDescription: event.description,
             eventImg: event.img,
@@ -41,23 +42,30 @@ const RegisterVolunteer = () => {
             },
             body: JSON.stringify(registeredInfo)
         })
-        history.replace('/registeredEvent');
+        .then(res => res.json())
+        .then(data => {
+            history.replace('/registeredEvent');
+            history.go(0);
+        })
+        e.preventDefault();
     }
 
     return (
         <div>
+            <br/><br/>
+            <h3 className="text-center">Register for this event</h3><br/><br/>
             <div className="container h-100">
                 <div className="row h-100 justify-content-center align-items-center">
                     <div className="col-10 col-md-8 col-lg-6">
                         <form className="form-example">
                             <div className="form-group">
                                 <label>Full Name:</label>
-                                <input type="text" className="form-control" placeholder="Full Name:" name="fullName" value={signedInUser.name} />
+                                <input type="text" className="form-control" placeholder="Full Name:" name="fullName" value={name} />
                             </div>
 
                             <div className="form-group">
                                 <label>Email:</label>
-                                <input type="text" className="form-control" placeholder="Email:" name="email" value={signedInUser.email} />
+                                <input type="text" className="form-control" placeholder="Email:" name="email" value={email} />
                             </div>
 
                             <div className="form-group">
@@ -67,7 +75,7 @@ const RegisterVolunteer = () => {
 
                             <div className="form-group">
                                 <label>Event Description:</label>
-                                <input type="text" className="form-control" placeholder="Event Description:" name="eventDescription" value={event.description} />
+                                <textarea rows="5" type="text" className="form-control" placeholder="Event Description:" name="eventDescription" value={event.description} />
                             </div>
 
                             <div className="form-group">
