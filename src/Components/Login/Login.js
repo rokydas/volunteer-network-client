@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { UserContext } from '../../App';
@@ -7,7 +7,6 @@ import { firebaseConfig } from './firebase.config';
 
 const Login = () => {
 
-    const [signedInUser, setSignedInUser] = useContext(UserContext);
     const [error, setError] = useState({});
     const history = useHistory();
     const location = useLocation();
@@ -24,12 +23,10 @@ const Login = () => {
         firebase.auth().signInWithPopup(googleProvider)
         .then( result => {
             const user = result.user;
-            const newUser = {
-                name: user.displayName,
-                email: user.email
-            }
-            setSignedInUser(newUser);
-            history.replace(from)
+            localStorage.setItem("name", user.displayName);
+            localStorage.setItem("email", user.email);
+            history.replace(from);
+            history.go(0);
         }).catch(error => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -39,8 +36,6 @@ const Login = () => {
 
     return (
         <div>
-            <h1>I am login page</h1>
-            <h3>Name: {signedInUser.name}</h3>
             <button onClick={handleLogin}>Continue with Google</button>
             <p style={{color: 'red'}}>{error.errorCode} {error.errorMessage}</p>
         </div>
