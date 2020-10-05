@@ -3,10 +3,6 @@ import './Event.css';
 
 const Event = (props) => {
     return (
-        // <Link to={`/RegisterVolunteer/${props.event.id}`} className="event">
-        //     <h3>{props.event.name}</h3>
-        //     <img src={props.event.img} alt=""/>
-        // </Link>
 
         <div className="card event-block" style={{width: '20rem', display: 'inline-block'}}>
             <img className="card-img-top" src={props.event.img} alt="Card image cap"></img>
@@ -15,7 +11,7 @@ const Event = (props) => {
                 <p className="card-text">{props.event.description}</p>
             </div>
             <div className="card-footer">
-                <a href={`/RegisterVolunteer/${props.event.id}`} className="btn btn-primary">Register</a>
+                <a href={`/RegisterVolunteer/${props.event._id}`} className="btn btn-primary">Register</a>
             </div>
         </div>
         

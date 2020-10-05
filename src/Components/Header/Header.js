@@ -1,27 +1,16 @@
 import React, { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import eventData from '../fakeData/eventData';
 import './Header.css';
 
 const Header = () => {
 
     const history = useHistory();
 
-    const handleAddEvent = () => {
-        fetch('https://volunteer-network18.herokuapp.com/addEvent', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(eventData)
-        })
-    }
-
     const handleLogOut = () => {
         localStorage.clear();
         history.go(0);
     }
- 
+
     const name = JSON.parse(localStorage.getItem("name"));
     const email = JSON.parse(localStorage.getItem("email"));  
 

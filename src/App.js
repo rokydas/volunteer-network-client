@@ -11,6 +11,7 @@ import RegisterVolunteer from './Components/RegisterVolunteer/RegisterVolunteer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RegisteredEvent from './Components/RegisteredEvent/RegisteredEvent';
 import AdminShowEvent from './Components/AdminShowEvent/AdminShowEvent';
+import AdminAddEvent from './Components/AdminAddEvent/AdminAddEvent';
 
 export const UserContext = createContext()
 
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path='/adminShowEvent'>
             <AdminShowEvent/>
+          </Route>
+          <Route path='/adminAddEvent'>
+            <AdminAddEvent/>
           </Route>
           <PrivateRoute path='/registerVolunteer/:id'>
             <RegisterVolunteer/>

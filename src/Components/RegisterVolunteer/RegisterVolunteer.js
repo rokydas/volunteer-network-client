@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import eventData from '../fakeData/eventData';
 
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
@@ -13,11 +12,25 @@ const RegisterVolunteer = () => {
 
     const history = useHistory();
 
+    const [eventData, setEventData] = useState([])
+    const [event, setEvent] = useState({})
+
     const name = JSON.parse(localStorage.getItem("name"));
     const email = JSON.parse(localStorage.getItem("email")); 
 
+    useEffect(() => {
+        fetch('https://volunteer-network18.herokuapp.com/event')
+        .then(res => res.json())
+        .then(data => {
+            setEventData(data)
+            const myEvent = data.find(e => e._id === id);
+            setEvent(myEvent);
+            // console.log(myEvent)
+        })
+    }, []) 
+    
+
     const { id } = useParams();
-    const event = eventData[id - 1];
 
     const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -27,7 +40,6 @@ const RegisterVolunteer = () => {
 
     const handleAddRegisteredEvent = (e) => {
         const registeredInfo = {
-            id: event.id,
             name: name,
             email: email,
             eventName: event.name,
